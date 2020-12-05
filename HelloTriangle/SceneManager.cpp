@@ -50,9 +50,10 @@ void SceneManager::initializeGraphics()
 	addShader("../shaders/transformations.vs", "../shaders/transformations.frag");
 	addShader("../shaders/FiltroGrayscale.vs", "../shaders/FiltroGrayscale.frag");
 	addShader("../shaders/FiltroColorizacao.vs", "../shaders/FiltroColorizacao.frag");
+	addShader("../shaders/FiltroBinarizacao.vs", "../shaders/FiltroBinarizacao.frag");
 	addShader("../shaders/FiltroInversao.vs", "../shaders/FiltroInversao.frag");
-	addShader("../shaders/FiltroInversao.vs", "../shaders/FiltroLivre.frag");
-	addShader("../shaders/FiltroInversao.vs", "../shaders/FiltroVignete.frag");
+	addShader("../shaders/FiltroLivre.vs", "../shaders/FiltroLivre.frag");
+	addShader("../shaders/FiltroVignete.vs", "../shaders/FiltroVignete.frag");
 
 	//setup the scene -- LEMBRANDO QUE A DESCRIÇÃO DE UMA CENA PODE VIR DE ARQUIVO(S) DE 
 	// CONFIGURAÇÃO
@@ -197,12 +198,14 @@ void SceneManager::setupScene()
 	shaders[2]->setVec3("corColorizadora", 1.0, 0.0, 0.0);
 
 	// Exercicio 1d) Inversão de cores
+	obj = new GameObject;
 	obj->setPosition(glm::vec3(0.0f, 400.0f, 0.0));
 	obj->setDimension(glm::vec3(200.0f, 200.0f, 1.0f));
 	obj->setShader(shaders[3]);
 	objects.push_back(obj); //adiciona o quarto obj
 
 	// Exercicio 1e) Binarização de cores
+	obj = new GameObject;
 	obj->setPosition(glm::vec3(200.0f, 400.0f, 0.0));
 	obj->setDimension(glm::vec3(200.0f, 200.0f, 1.0f));
 	obj->setShader(shaders[4]);
@@ -210,12 +213,14 @@ void SceneManager::setupScene()
 	shaders[4]->setInt("limiar", 120);
 
 	// Exercicio 1f) Crie seu filtro! Efeito polaroid
+	obj = new GameObject;
 	obj->setPosition(glm::vec3(400.0f, 400.0f, 0.0));
 	obj->setDimension(glm::vec3(200.0f, 200.0f, 1.0f));
 	obj->setShader(shaders[5]);
 	objects.push_back(obj); //adiciona o sexto obj
 
 	// Exercicio 1g) Efeito vignete
+	obj = new GameObject;
 	obj->setPosition(glm::vec3(600.0f, 400.0f, 0.0));
 	obj->setDimension(glm::vec3(200.0f, 200.0f, 1.0f));
 	obj->setShader(shaders[6]);
